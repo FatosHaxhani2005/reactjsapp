@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing Page</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      margin: 0;
+    }
+    main {
+      padding: 20px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .option-container {
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    function selectOption(option) {
+      var stepElement = document.getElementById('step');
+      var mainElement = document.getElementById('main');
+      stepElement.textContent = '2/2';
+
+      mainElement.innerHTML = '';
+
+      var selectedOptionElement = document.createElement('p');
+      selectedOptionElement.textContent = option;
+
+      var backButton = document.createElement('button');
+      backButton.textContent = 'Back';
+      backButton.addEventListener('click', goBack);
+
+      mainElement.appendChild(selectedOptionElement);
+      mainElement.appendChild(backButton);
+    }
+
+    function goBack() {
+      var stepElement = document.getElementById('step');
+      var mainElement = document.getElementById('main');
+
+      stepElement.textContent = '1/2';
+
+      mainElement.innerHTML = '';
+
+      var optionContainer = document.createElement('div');
+      optionContainer.id = 'optionContainer';
+      optionContainer.className = 'option-container';
+
+      var options = ['Internship', 'Pabau', 'Employment', 'Career'];
+
+      for (var i = 0; i < options.length; i++) {
+        var optionButton = document.createElement('button');
+        optionButton.textContent = options[i];
+        optionButton.addEventListener('click', function () {
+          selectOption(this.textContent);
+        });
+
+        optionContainer.appendChild(optionButton);
+        optionContainer.appendChild(document.createElement('br'));
+      }
+
+      mainElement.appendChild(optionContainer);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>App</h1>
+    <p id="step">1/2</p>
+  </header>
+  <main id="main">
+    <div class="option-container" id="optionContainer">
+      <button onclick="selectOption('Internship')">Internship</button><br>
+      <button onclick="selectOption('Pabau')">Pabau</button><br>
+      <button onclick="selectOption('Employment')">Employment</button><br>
+      <button onclick="selectOption('Career')">Career</button><br>
+    </div>
+  </main>
+  <footer>
+    &copy; 2023 App
+  </footer>
+</body>
+</html>
